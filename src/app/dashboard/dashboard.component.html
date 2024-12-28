@@ -1,0 +1,29 @@
+<div class="dashboard-container">
+  <h2>Welcome to the Dashboard</h2>
+  <div>
+    <button mat-raised-button color="primary" (click)="loadInbox()">Inbox</button>
+    <button mat-raised-button color="accent" (click)="loadSent()">Sent</button>
+    <button mat-raised-button color="warn" (click)="loadDrafts()">Drafts</button>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="Inbox">
+      <div *ngFor="let letter of inbox">
+        <p><strong>Subject:</strong> {{ letter.subject }}</p>
+        <button mat-button color="primary" (click)="viewLetter(letter)">View</button>
+        <button mat-button color="accent" (click)="replyToLetter(letter)">Reply</button>
+        <button mat-button color="warn" (click)="forwardLetter(letter)">Forward</button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Sent">
+      <div *ngFor="let letter of sent">
+        <p><strong>Subject:</strong> {{ letter.subject }}</p>
+      </div>
+    </mat-tab>
+    <mat-tab label="Drafts">
+      <div *ngFor="let letter of drafts">
+        <p><strong>Subject:</strong> {{ letter.subject }}</p>
+        <button mat-button color="primary" (click)="editDraft(letter)">Edit</button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

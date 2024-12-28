@@ -1,0 +1,30 @@
+<div class="compose-container">
+  <mat-card>
+    <mat-card-title>Compose Letter</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" #composeForm="ngForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Recipient</mat-label>
+          <input matInput [(ngModel)]="recipient" name="recipient" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Subject</mat-label>
+          <input matInput [(ngModel)]="subject" name="subject" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Message</mat-label>
+          <textarea matInput [(ngModel)]="message" name="message" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Attach File</mat-label>
+          <input type="file" (change)="onFileChange($event)" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!composeForm.form.valid">Send</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
